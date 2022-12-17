@@ -5,33 +5,36 @@ import { cors } from 'hono/cors';
 import { logger } from 'hono/logger';
 import { prettyJSON } from 'hono/pretty-json';
 
-import { userRouter } from './routes/user';
+import { routes } from './routes/index';
 
 const port = parseInt(process.env.PORT) || 3000;
 
 const app = new Hono();
 
 app.use('/favicon.ico', serveStatic({ path: './public/favicon.ico' }));
-app.use('*', compress());
+// app.use('*', compress());
 app.use('*', cors());
 app.use('*', logger());
 app.use('*', prettyJSON());
 
-app.route('/', userRouter);
+app.route('/', routes);
 
-// app.get('/', c => {
-//     const currentDate = new Date().toLocaleString('pt-BR');
-//     return c.json({
-//         status: true,
-//         message: `App is working fine ${currentDate}`,
-//         data: [
-//             {
-//                 author: 'Daniel Rodrigues',
-//                 page: 'https://linktr.ee/danielsrod',
-//             },
-//         ],
-//     });
-// });
+app.post('/', async c => {
+    try {
+        return c.json({
+            status: true,
+            message: `App is working fine ${new Date().toLocaleString('pt-BR')}`,
+            data: [
+                {
+                    author: 'Daniel Rodrigues',
+                    page: 'https://linktr.ee/danielsrod',
+                },
+            ],
+        });
+    } catch (err) {
+        return c.text(err);
+    }
+});
 
 console.info(`Running at *:${port}`);
 

@@ -15,6 +15,7 @@ export default {
                 data: rows,
             });
         } catch (err) {
+            console.error(err);
             return new DefaultReturnHandler({
                 status: false,
                 message: JSON.stringify(err),

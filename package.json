@@ -1,19 +1,20 @@
 {
-  "version": "1.0.69",
-  "name": "bun-hono-railway",
-  "devDependencies": {
-    "@types/dotenv": "^8.2.0",
-    "@types/pg": "^8.6.5",
-    "bun-types": "latest",
-    "prettier": "^2.8.1"
-  },
-  "dependencies": {
-    "dotenv": "^16.0.3",
-    "hono": "^2.2.5",
-    "pg": "^8.8.0"
-  },
-  "scripts": {
-    "start": "bun run src/index.ts"
-  },
-  "module": "src/index.js"
+    "version": "1.0.69",
+    "name": "bun-hono-railway",
+    "devDependencies": {
+        "@types/dotenv": "^8.2.0",
+        "@types/pg": "^8.6.5",
+        "bun-types": "latest",
+        "prettier": "^2.8.1"
+    },
+    "dependencies": {
+        "dotenv": "^16.0.3",
+        "hono": "^2.2.5",
+        "pg": "^8.8.0",
+        "dns": "file:./src/mock/dns"
+    },
+    "scripts": {
+        "start": "bun run src/index.ts"
+    },
+    "module": "src/index.js"
 }
