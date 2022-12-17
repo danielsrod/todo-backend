@@ -4,4 +4,4 @@ import { validators } from '../validator/user';
 
 export const userRouter = new Hono();
 
-userRouter.post('/user/doLogin/', userController.doLogin);
+userRouter.post('/user/doLogin', userController.doLogin);

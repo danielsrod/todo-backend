@@ -12,14 +12,14 @@ const port = parseInt(process.env.PORT) || 3000;
 const app = new Hono();
 
 app.use('/favicon.ico', serveStatic({ path: './public/favicon.ico' }));
-// app.use('*', compress());
+app.use('*', compress());
 app.use('*', cors());
 app.use('*', logger());
 app.use('*', prettyJSON());
 
 app.route('/', routes);
 
-app.post('/', async c => {
+app.get('/', async c => {
     try {
         return c.json({
             status: true,

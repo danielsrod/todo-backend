@@ -1,4 +1,4 @@
-import { Pool } from 'pg';
+import { Pool, Connection } from 'pg';
 import { config } from 'dotenv';
 config();
 
@@ -19,6 +19,16 @@ const credentials: ICredentials = {
 };
 
 const client = new Pool(credentials);
+// const client = new Connection(credentials);
+
+const teste = async () => {
+    const sql = 'select * from users';
+    const params = [];
+    const result = await client.query(sql, params);
+    console.log(result);
+};
+teste();
+// console.log('client >>> ', client);
 console.info('Connected to Postgres Database');
 
 export default client;
